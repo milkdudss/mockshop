@@ -1,7 +1,20 @@
-import React from 'react';
+import { render } from '@testing-library/react'
+import { Provider } from 'react-redux'
+import React from 'react'
+import store from "../store"
+import ProductsContainer from './CategoriesListReact'
+
+
+
 
 function App() {
-  return <>HELLO WORLD</>;
+  return (
+  <Provider store={store}>
+  <div>
+    <ProductsContainer />
+  </div>
+  </Provider>
+    )
 }
 
 export default App;
