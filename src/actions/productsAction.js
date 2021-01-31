@@ -10,10 +10,10 @@ export const getProductsRequest = () => {
     }
 }
 
-const getProductsSuccess = products => {
+const getProductsSuccess = categories => {
     return {
         type: GET_PRODUCTS_SUCCESS,
-        payload: products
+        payload: categories
     }
 }
 
@@ -31,8 +31,8 @@ export const fetchProducts = () => {
         dispatch(getProductsRequest)
         axios.get('https://fakestoreapi.com/products')
         .then(response => {
-            const products = response.data 
-            dispatch(getProductsSuccess(products))
+            const categories = response.data 
+            dispatch(getProductsSuccess(categories))
         })
         .catch(error => {
             const errorMsg = error.message

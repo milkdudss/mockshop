@@ -4,9 +4,11 @@ import { GET_PRODUCTS_FAILURE,
 
 const initialState = {
     loading: false,
-    products: [],
+    category: [],
     error: ''
 }
+
+
 
 const productsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -16,15 +18,24 @@ const productsReducer = (state = initialState, action) => {
                 loading: true
             }
         case GET_PRODUCTS_SUCCESS:
+            
+            
+        let categories = action.payload.reduce((r, a) => {  
+            r[a.category] = r[a.category] || [];
+            r[a.category].push(a);
+                return r; 
+                }, []);
+                console.log(Object.keys(categories))
             return {
+                ...state,
                 loading: false,
-                products: action.payload,
+                category: categories,
                 error: ''
             }
         case GET_PRODUCTS_FAILURE:
             return {
                 loading: false,
-                products: [],
+                category: [],
                 error: action.payload
             }
         default: return state

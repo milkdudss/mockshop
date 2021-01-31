@@ -10,9 +10,9 @@ import ProductsContainer from './CategoriesListReact'
 function App() {
   return (
   <Provider store={store}>
-  <div>
+  
     <ProductsContainer />
-  </div>
+  
   </Provider>
     )
 }
