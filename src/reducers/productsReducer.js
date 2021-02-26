@@ -3,8 +3,9 @@ import { GET_PRODUCTS_FAILURE,
       GET_PRODUCTS_SUCCESS } from "../types"
 
 const initialState = {
-    loading: false,
+    loading: true,
     category: [],
+    productsById: [],
     error: ''
 }
 
@@ -25,11 +26,18 @@ const productsReducer = (state = initialState, action) => {
             r[a.category].push(a);
                 return r; 
                 }, []);
-                console.log(Object.keys(categories))
+        
+        let id = action.payload.reduce((r, a) => {
+            r[a.id] = r[a.id] || [];
+            r[a.id].push(a);
+                return r;
+                }, []);
+                
             return {
                 ...state,
                 loading: false,
                 category: categories,
+                productsById: id,
                 error: ''
             }
         case GET_PRODUCTS_FAILURE:
