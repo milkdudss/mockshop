@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   makeStyles,
   TextField,
@@ -50,13 +50,17 @@ const useStyles = makeStyles({
     },
   });
 
-  export default function SelectedProductContainer({ selectedProductID }) {
+  const SelectedProductContainer = () => {
     const styles = useStyles();
-    const selectedProduct = useSelector(state => state.products.productsById[selectedProductID][0]);
+    const productID = useSelector(state => state.app.selectedProductID);
+    
+    const selectedProduct = useSelector(state => state.products.productsById[productID][0]);
+    
     const [value, setValue] = useState('');
 
     const handleChange = e => setValue(e.target.value)
-    console.log(selectedProduct.category)
+
+   
 
     return (
         <>
@@ -99,3 +103,5 @@ const useStyles = makeStyles({
         </>
     )
   }
+
+  export default SelectedProductContainer;

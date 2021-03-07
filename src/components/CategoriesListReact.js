@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 
 import { setCategory } from '../actions/appActions'
@@ -15,8 +15,9 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
-      maxWidth: 395,
-      minWidth: 100,
+        width: 150,
+        height: 200,
+        padding: 20,
     },
     media: {
       height: 140,
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
 
 
 
-function ProductsContainer ({  }) {
+const ProductsContainer = ({ }) => {
    
 
    const classes = useStyles();
@@ -56,7 +57,7 @@ function ProductsContainer ({  }) {
 
     return (
         <div className={classes.flex}>
-            {state.loading == false ? (
+            {state.loading === false ? (
                 Object.keys(product).map((categoryName, index) => {
                     return (
                         <Card key={index} className={classes.root}>

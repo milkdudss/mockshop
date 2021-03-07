@@ -6,6 +6,7 @@ const initialState = {
     loading: true,
     category: [],
     productsById: [],
+    fetchedProducts: [],
     error: ''
 }
 
@@ -32,12 +33,17 @@ const productsReducer = (state = initialState, action) => {
             r[a.id].push(a);
                 return r;
                 }, []);
+
+        let A = action.payload;
+
+        let fetchedProducts = A.map(x => x);
                 
             return {
                 ...state,
                 loading: false,
                 category: categories,
                 productsById: id,
+                fetchedProducts: fetchedProducts,
                 error: ''
             }
         case GET_PRODUCTS_FAILURE:

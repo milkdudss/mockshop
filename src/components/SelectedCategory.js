@@ -3,7 +3,6 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import {
   makeStyles,
-  CircularProgress,
   Card,
   CardActionArea,
   CardMedia,
@@ -11,7 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { setProduct } from '../actions/appActions';
+import { setProductID } from '../actions/appActions';
 
 const useStyles = makeStyles({
     categoryTitle: {
@@ -39,16 +38,20 @@ const useStyles = makeStyles({
     },
   });
 
-  export default function SelectedCategoryContainer({ selectedCategory }) {
+  const SelectedCategoryContainer = () => {
     const styles = useStyles();
     const dispatch = useDispatch();
+
+    
+    const selectedCategory = useSelector(state => state.app.selectedCategoryName);
+   
 
     const products = useSelector(
       state => state.products.category[selectedCategory]
     );
     
     const cardClickHandler = product => {
-      dispatch(setProduct(product));
+      dispatch(setProductID(product));
   }
   
   
@@ -78,4 +81,4 @@ const useStyles = makeStyles({
     )
   }
 
-  
+  export default SelectedCategoryContainer
