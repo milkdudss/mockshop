@@ -1,4 +1,4 @@
-import { SET_CATEGORY, SET_PRODUCTID, GO_HOME, SEARCH_STRING, CLEAR_SEARCH } from "../actions/appActions"
+import { SET_CATEGORY, SET_PRODUCTID, GO_HOME, SEARCH_STRING, CLEAR_SEARCH, SET_PRODUCTID_FROM_OVERLAY } from "../actions/appActions"
 
 const initialState = { activePage: 'Home',selectedCategoryName: [], selectedProductID: [], inputedString: '', }
 
@@ -26,7 +26,15 @@ const appReducer = (state = initialState, action) => {
         case CLEAR_SEARCH:
             return {
                 ...state,
-                inputedString: initialState.inputedString,              
+                inputedString: initialState.inputedString,    
+            };
+        case SET_PRODUCTID_FROM_OVERLAY:
+            return {
+                ...state,
+                selectedProductID: action.selectedProductID,
+                activePage: "ProductPage",
+                inputedString: initialState.inputedString,
+            
             };
             default: 
              return state;

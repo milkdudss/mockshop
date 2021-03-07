@@ -3,6 +3,7 @@ export const SET_PRODUCTID = "SET_PRODUCTID"
 export const GO_HOME = "GO_HOME"
 export const SEARCH_STRING = "SEARCH_STRING"
 export const CLEAR_SEARCH = "CLEAR_SEARCH"
+export const SET_PRODUCTID_FROM_OVERLAY = "SET_PRODUCTID_FROM_OVERLAY"
 
 export const setCategory = selectedCategoryName => ({
     
@@ -28,4 +29,10 @@ export const searchString = inputedString => ({
 
 export const clearSearch = () => ({
         type: CLEAR_SEARCH
+})
+
+export const setProductIDFromOverlay = selectedProductID => ({
+
+        type: SET_PRODUCTID_FROM_OVERLAY,
+        selectedProductID,
 })

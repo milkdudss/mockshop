@@ -11,7 +11,7 @@ import {
 
 import Button from '@material-ui/core/Button';
 
-import { clearSearch } from '../actions/appActions'
+import { clearSearch, setProductIDFromOverlay } from '../actions/appActions'
 
   const useStyles = makeStyles((theme) => ({
     categoryTitle: {
@@ -59,6 +59,10 @@ const clearSearchClicker = () => {
     dispatch(clearSearch());
 }
 
+const cardClickHandler = product => {
+  dispatch(setProductIDFromOverlay(product));
+}
+
     return (
         <div>
             <div> 
@@ -78,7 +82,7 @@ const clearSearchClicker = () => {
                 return (
                 <div >
                 <Card key={product.id} className={styles.root}>
-                    <CardActionArea >
+                    <CardActionArea onClick={() => cardClickHandler(product.id)} >
                         <CardMedia image={product.image} className={styles.media}/>
                         <CardContent>
                         <Typography className={styles.title}>
